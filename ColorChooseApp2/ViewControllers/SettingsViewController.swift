@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     //MARK: IBOutlets
     @IBOutlet var colorWindowView: UIView!

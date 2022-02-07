@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		74CB738F27B1654600C09859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CB738E27B1654600C09859 /* AppDelegate.swift */; };
 		74CB739127B1654600C09859 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CB739027B1654600C09859 /* SceneDelegate.swift */; };
-		74CB739327B1654600C09859 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CB739227B1654600C09859 /* ViewController.swift */; };
+		74CB739327B1654600C09859 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CB739227B1654600C09859 /* SettingsViewController.swift */; };
 		74CB739627B1654600C09859 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74CB739427B1654600C09859 /* Main.storyboard */; };
 		74CB739827B1654800C09859 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74CB739727B1654800C09859 /* Assets.xcassets */; };
 		74CB739B27B1654800C09859 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74CB739927B1654800C09859 /* LaunchScreen.storyboard */; };
+		74CB73A727B16C0C00C09859 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CB73A627B16C0C00C09859 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		74CB738B27B1654600C09859 /* ColorChooseApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorChooseApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CB738E27B1654600C09859 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74CB739027B1654600C09859 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		74CB739227B1654600C09859 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		74CB739227B1654600C09859 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		74CB739527B1654600C09859 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74CB739727B1654800C09859 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74CB739A27B1654800C09859 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74CB739C27B1654800C09859 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74CB73A627B16C0C00C09859 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,8 @@
 		74CB73A527B165ED00C09859 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				74CB739227B1654600C09859 /* ViewController.swift */,
+				74CB73A627B16C0C00C09859 /* MainViewController.swift */,
+				74CB739227B1654600C09859 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -170,9 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74CB739327B1654600C09859 /* ViewController.swift in Sources */,
+				74CB739327B1654600C09859 /* SettingsViewController.swift in Sources */,
 				74CB738F27B1654600C09859 /* AppDelegate.swift in Sources */,
 				74CB739127B1654600C09859 /* SceneDelegate.swift in Sources */,
+				74CB73A727B16C0C00C09859 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
