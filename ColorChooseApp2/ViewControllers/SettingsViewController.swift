@@ -21,10 +21,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet var blueColorSlider: UISlider!
     
     var mainViewColor: UIColor!
+    var delegate: SettingsViewControllerDelegate!
     
-    private var red: CGFloat = 0
-    private var green: CGFloat = 0
-    private var blue: CGFloat = 0
+    var red: CGFloat = 0
+    var green: CGFloat = 0
+    var blue: CGFloat = 0
     
     
     //MARK: - Override method
@@ -47,6 +48,11 @@ class SettingsViewController: UIViewController {
     }
     
     //MARK: - IBActions
+    @IBAction func doneButtonPressed() {
+        delegate.receiveColor(view: colorWindowView.backgroundColor!)
+        dismiss(animated: true)
+    }
+    
     @IBAction func rgbSlider(_ sender: UISlider) {
         changeColor()
         switch sender {

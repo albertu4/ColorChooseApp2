@@ -32,9 +32,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JS5-xD-A6l">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="6zO-Et-ig7">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="6zO-Et-ig7">
                             <connections>
-                                <segue destination="T5v-i6-E3D" kind="presentation" id="cKH-Im-yDd"/>
+                                <segue destination="T5v-i6-E3D" kind="presentation" modalPresentationStyle="fullScreen" id="cKH-Im-yDd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -51,11 +51,11 @@
             <objects>
                 <viewController id="T5v-i6-E3D" customClass="SettingsViewController" customModule="ColorChooseApp2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aOr-9n-mra">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5EG-h2-9VX" userLabel="Stack RGB">
-                                <rect key="frame" x="20" y="280" width="374" height="124"/>
+                                <rect key="frame" x="20" y="324" width="374" height="124"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="5Ns-y7-CYC" userLabel="Stack RGB labels">
                                         <rect key="frame" x="0.0" y="5.5" width="51" height="113.5"/>
@@ -137,14 +137,26 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBg-jN-dkf">
-                                <rect key="frame" x="20" y="20" width="374" height="230"/>
+                                <rect key="frame" x="20" y="64" width="374" height="230"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFg-Z5-XMz">
+                                <rect key="frame" x="164" y="765.5" width="86.5" height="46.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="27"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="doneButtonPressed" destination="T5v-i6-E3D" eventType="touchUpInside" id="KOr-aM-fvl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MkE-sH-cGG"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                         <constraints>
+                            <constraint firstItem="eFg-Z5-XMz" firstAttribute="centerX" secondItem="aOr-9n-mra" secondAttribute="centerX" id="0NL-9R-2eY"/>
                             <constraint firstItem="5EG-h2-9VX" firstAttribute="leading" secondItem="MkE-sH-cGG" secondAttribute="leading" constant="20" id="BDH-m5-KLc"/>
+                            <constraint firstItem="MkE-sH-cGG" firstAttribute="bottom" secondItem="eFg-Z5-XMz" secondAttribute="bottom" constant="50" id="EWE-XP-Nrt"/>
                             <constraint firstItem="pBg-jN-dkf" firstAttribute="leading" secondItem="MkE-sH-cGG" secondAttribute="leading" constant="20" id="KUL-5t-bEr"/>
                             <constraint firstItem="MkE-sH-cGG" firstAttribute="trailing" secondItem="5EG-h2-9VX" secondAttribute="trailing" constant="20" id="So9-js-n4d"/>
                             <constraint firstItem="pBg-jN-dkf" firstAttribute="centerX" secondItem="aOr-9n-mra" secondAttribute="centerX" id="fpC-5l-aLW"/>
