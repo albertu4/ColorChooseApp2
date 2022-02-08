@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    //MARK: IBOutlets
+    //MARK: - IBOutlets
     @IBOutlet var colorWindowView: UIView!
     
     @IBOutlet var valueOfRed: UILabel!
@@ -20,10 +20,24 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenColorSlider: UISlider!
     @IBOutlet var blueColorSlider: UISlider!
     
-    //MARK: Override method
+    var mainViewColor: UIColor!
+    
+    private var red: CGFloat = 0
+    private var green: CGFloat = 0
+    private var blue: CGFloat = 0
+    
+    
+    //MARK: - Override method
     override func viewDidLoad() {
         super.viewDidLoad()
         colorWindowView.layer.cornerRadius = 10
+        
+        mainViewColor.getRed(&red, green: &green, blue: &blue, alpha: nil)
+        
+        //default color
+        redColorSlider.value = Float(red)
+        greenColorSlider.value = Float(green)
+        blueColorSlider.value = Float(blue)
         
         transferSliderToValue(redColorSlider)
         transferSliderToValue(greenColorSlider)
@@ -32,7 +46,7 @@ class SettingsViewController: UIViewController {
         changeColor()
     }
     
-    //MARK: IBActions
+    //MARK: - IBActions
     @IBAction func rgbSlider(_ sender: UISlider) {
         changeColor()
         switch sender {
@@ -45,7 +59,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    //MARK: Private Methods
+    //MARK: - Private Methods
     private func transferSliderToValue(_ slider: UISlider) {
         switch slider {
         case redColorSlider:

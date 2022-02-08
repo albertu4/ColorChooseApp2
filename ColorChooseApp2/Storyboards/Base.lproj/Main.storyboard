@@ -38,6 +38,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mainView" destination="QhH-Z3-l5e" id="RpU-2i-ztX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5DR-YW-yYD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,7 +49,7 @@
         <!--Settings View Controller-->
         <scene sceneID="NEW-f5-Qvh">
             <objects>
-                <viewController id="T5v-i6-E3D" customClass="SettingsViewController" customModule="ColorChooseApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T5v-i6-E3D" customClass="SettingsViewController" customModule="ColorChooseApp2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aOr-9n-mra">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
