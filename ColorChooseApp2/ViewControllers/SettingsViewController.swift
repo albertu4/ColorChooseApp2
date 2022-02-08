@@ -20,12 +20,16 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenColorSlider: UISlider!
     @IBOutlet var blueColorSlider: UISlider!
     
+    @IBOutlet var redColorTF: UITextField!
+    @IBOutlet var greenColorTF: UITextField!
+    @IBOutlet var blueColorTF: UITextField!
+    
     var mainViewColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
-    var red: CGFloat = 0
-    var green: CGFloat = 0
-    var blue: CGFloat = 0
+    private var red: CGFloat = 0
+    private var green: CGFloat = 0
+    private var blue: CGFloat = 0
     
     
     //MARK: - Override method
@@ -70,10 +74,13 @@ class SettingsViewController: UIViewController {
         switch slider {
         case redColorSlider:
             valueOfRed.text = String(format: "%.2f", redColorSlider.value)
+            redColorTF.text = String(format: "%.2f", redColorSlider.value)
         case greenColorSlider:
             valueOfGreen.text = String(format: "%.2f", greenColorSlider.value)
+            greenColorTF.text = String(format: "%.2f", greenColorSlider.value)
         default:
             valueOfBlue.text = String(format: "%.2f", blueColorSlider.value)
+            blueColorTF.text = String(format: "%.2f", blueColorSlider.value)
         }
     }
         
@@ -85,5 +92,9 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
+    
+}
+
+extension SettingsViewController: UITextFieldDelegate {
     
 }
