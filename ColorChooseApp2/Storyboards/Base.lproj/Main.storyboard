@@ -110,24 +110,24 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fp-p8-GmT" userLabel="Stack Sliders for RGB">
-                                        <rect key="frame" x="106" y="0.0" width="118" height="124"/>
+                                        <rect key="frame" x="106" y="0.0" width="115" height="124"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IwJ-Za-WhK">
-                                                <rect key="frame" x="-2" y="0.0" width="122" height="31"/>
+                                                <rect key="frame" x="-2" y="0.0" width="119" height="31"/>
                                                 <color key="tintColor" red="1" green="0.173347426" blue="0.18308114759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <connections>
                                                     <action selector="rgbSlider:" destination="T5v-i6-E3D" eventType="valueChanged" id="8Ul-20-Vhd"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.30000001192092896" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="W8M-ny-nJo">
-                                                <rect key="frame" x="-2" y="47" width="122" height="31"/>
+                                                <rect key="frame" x="-2" y="47" width="119" height="31"/>
                                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                                 <connections>
                                                     <action selector="rgbSlider:" destination="T5v-i6-E3D" eventType="valueChanged" id="3Mc-mB-O69"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZX4-av-fmz">
-                                                <rect key="frame" x="-2" y="94" width="122" height="31"/>
+                                                <rect key="frame" x="-2" y="94" width="119" height="31"/>
                                                 <connections>
                                                     <action selector="rgbSlider:" destination="T5v-i6-E3D" eventType="valueChanged" id="bws-YZ-5tG"/>
                                                 </connections>
@@ -135,27 +135,27 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rPY-Oq-YEm" userLabel="Stack RGB Text Fields">
-                                        <rect key="frame" x="234" y="1" width="46" height="122"/>
+                                        <rect key="frame" x="231" y="1" width="49" height="122"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Zfh-Ct-m1h" userLabel="Red Color Text Field">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zfh-Ct-m1h" userLabel="Red Color Text Field">
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="34"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="ARv-gS-IGw" userLabel="Green Color Text Field">
-                                                <rect key="frame" x="0.0" y="44" width="46" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARv-gS-IGw" userLabel="Green Color Text Field">
+                                                <rect key="frame" x="0.0" y="44" width="49" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="0gg-xO-0Ff" userLabel="Blue Color Text Field">
-                                                <rect key="frame" x="0.0" y="88" width="46" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gg-xO-0Ff" userLabel="Blue Color Text Field">
+                                                <rect key="frame" x="0.0" y="88" width="49" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="HfN-64-xLA"/>
+                                            <constraint firstAttribute="width" constant="49" id="HfN-64-xLA"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

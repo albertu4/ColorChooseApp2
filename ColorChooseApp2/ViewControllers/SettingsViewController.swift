@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
     //MARK: - IBOutlets
     @IBOutlet var colorWindowView: UIView!
     
@@ -24,9 +24,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenColorTF: UITextField!
     @IBOutlet var blueColorTF: UITextField!
     
+    //MARK: - Public Properties
     var mainViewColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
+    //MARK: - Private Properties
     private var red: CGFloat = 0
     private var green: CGFloat = 0
     private var blue: CGFloat = 0
@@ -41,16 +43,14 @@ class SettingsViewController: UIViewController {
         greenColorTF.delegate = self
         blueColorTF.delegate = self
         
+        //default color
         mainViewColor.getRed(&red, green: &green, blue: &blue, alpha: nil)
         
-        //default color
         redColorSlider.value = Float(red)
         greenColorSlider.value = Float(green)
         blueColorSlider.value = Float(blue)
         
-        transferSliderToValue(redColorSlider)
-        transferSliderToValue(greenColorSlider)
-        transferSliderToValue(blueColorSlider)
+        transferSliderToValue(redColorSlider, greenColorSlider, blueColorSlider)
         
         changeColor()
     }
@@ -65,29 +65,35 @@ class SettingsViewController: UIViewController {
         changeColor()
         switch sender {
         case redColorSlider:
-            transferSliderToValue(redColorSlider)
+            transferSliderToValue(sender)
         case greenColorSlider:
-            transferSliderToValue(greenColorSlider)
+            transferSliderToValue(sender)
         default:
-            transferSliderToValue(blueColorSlider)
+            transferSliderToValue(sender)
         }
     }
     
     //MARK: - Private Methods
-    private func transferSliderToValue(_ slider: UISlider) {
-        switch slider {
-        case redColorSlider:
-            valueOfRed.text = String(format: "%.2f", redColorSlider.value)
-            redColorTF.text = String(format: "%.2f", redColorSlider.value)
-        case greenColorSlider:
-            valueOfGreen.text = String(format: "%.2f", greenColorSlider.value)
-            greenColorTF.text = String(format: "%.2f", greenColorSlider.value)
-        default:
-            valueOfBlue.text = String(format: "%.2f", blueColorSlider.value)
-            blueColorTF.text = String(format: "%.2f", blueColorSlider.value)
+    private func transferSliderToValue(_ sliders: UISlider...) {
+        sliders.forEach { slider in
+            switch slider {
+            case redColorSlider:
+                valueOfRed.text = makeStringFormat(slider)
+                redColorTF.text = makeStringFormat(slider)
+            case greenColorSlider:
+                valueOfGreen.text = makeStringFormat(slider)
+                greenColorTF.text = makeStringFormat(slider)
+            default:
+                valueOfBlue.text = makeStringFormat(slider)
+                blueColorTF.text = makeStringFormat(slider)
+            }
         }
     }
-        
+    
+    private func makeStringFormat(_ slider: UISlider) -> String{
+        String(format: "%.2f", slider.value)
+    }
+    
     private func changeColor() {
         colorWindowView.backgroundColor = UIColor(
             red: CGFloat(redColorSlider.value),
@@ -96,7 +102,6 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
-    
 }
 
 //MARK: - Extensions
@@ -109,7 +114,8 @@ extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
         guard let numberValue = Float(newValue)
-        else { return showAlert(title: "Invalid values", and: "Input the correct values") }
+        else { return showAlert(title: "Invalid values",
+                                and: "Input the correct values") }
         
         if textField == redColorTF {
             redColorSlider.value = numberValue
@@ -128,10 +134,12 @@ extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textFieldDidEndEditing(textField)
+        view.endEditing(true)
         return true
     }
 }
 
+//MARK: - Alert Controller
 extension SettingsViewController {
     func showAlert(title: String, and message: String) {
         let alert = UIAlertController(title: title,
