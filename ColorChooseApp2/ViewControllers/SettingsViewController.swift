@@ -37,6 +37,10 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         colorWindowView.layer.cornerRadius = 10
         
+        redColorTF.delegate = self
+        greenColorTF.delegate = self
+        blueColorTF.delegate = self
+        
         mainViewColor.getRed(&red, green: &green, blue: &blue, alpha: nil)
         
         //default color
@@ -95,6 +99,46 @@ class SettingsViewController: UIViewController {
     
 }
 
+//MARK: - Extensions
 extension SettingsViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let newValue = textField.text else { return }
+        guard let numberValue = Float(newValue)
+        else { return showAlert(title: "Invalid values", and: "Input the correct values") }
+        
+        if textField == redColorTF {
+            redColorSlider.value = numberValue
+            transferSliderToValue(redColorSlider)
+            changeColor()
+        } else if textField == greenColorTF {
+            greenColorSlider.value = numberValue
+            transferSliderToValue(greenColorSlider)
+            changeColor()
+        } else {
+            blueColorSlider.value = numberValue
+            transferSliderToValue(blueColorSlider)
+            changeColor()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldDidEndEditing(textField)
+        return true
+    }
+}
+
+extension SettingsViewController {
+    func showAlert(title: String, and message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }

@@ -14,14 +14,9 @@ protocol SettingsViewControllerDelegate {
 class MainViewController: UIViewController {
 
     @IBOutlet var mainView: UIView!
-    
-    var red: Float = 0
-    var green = 0
-    var blue = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
