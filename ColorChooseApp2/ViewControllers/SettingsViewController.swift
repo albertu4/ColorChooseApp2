@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenColorSlider: UISlider!
     @IBOutlet var blueColorSlider: UISlider!
     
-    @IBOutlet var redColorTF: UITextField! 
+    @IBOutlet var redColorTF: UITextField!
     @IBOutlet var greenColorTF: UITextField!
     @IBOutlet var blueColorTF: UITextField!
     
@@ -37,22 +37,14 @@ class SettingsViewController: UIViewController {
         greenColorTF.delegate = self
         blueColorTF.delegate = self
         
-        //default color
-        
-        let ciColor = CIColor(color: mainViewColor)
-        
-        redColorSlider.value = Float(ciColor.red)
-        greenColorSlider.value = Float(ciColor.green)
-        blueColorSlider.value = Float(ciColor.blue)
-        
+        setColor()
         transferSliderToValue(redColorSlider, greenColorSlider, blueColorSlider)
-        
         changeColor()
     }
     
     //MARK: - IBActions
     @IBAction func doneButtonPressed() {
-        delegate.receiveColor(view: colorWindowView.backgroundColor ?? .white)
+        delegate.receiveColor(colorWindowView.backgroundColor ?? .white)
         dismiss(animated: true)
     }
     
@@ -69,24 +61,32 @@ class SettingsViewController: UIViewController {
     }
     
     //MARK: - Private Methods
+    private func setColor() {
+        let ciColor = CIColor(color: mainViewColor)
+        
+        redColorSlider.value = Float(ciColor.red)
+        greenColorSlider.value = Float(ciColor.green)
+        blueColorSlider.value = Float(ciColor.blue)
+    }
+    
+    private func string(_ slider: UISlider) -> String{
+        String(format: "%.2f", slider.value)
+    }
+    
     private func transferSliderToValue(_ sliders: UISlider...) {
         sliders.forEach { slider in
             switch slider {
             case redColorSlider:
-                valueOfRed.text = makeStringFormat(slider)
-                redColorTF.text = makeStringFormat(slider)
+                valueOfRed.text = string(slider)
+                redColorTF.text = string(slider)
             case greenColorSlider:
-                valueOfGreen.text = makeStringFormat(slider)
-                greenColorTF.text = makeStringFormat(slider)
+                valueOfGreen.text = string(slider)
+                greenColorTF.text = string(slider)
             default:
-                valueOfBlue.text = makeStringFormat(slider)
-                blueColorTF.text = makeStringFormat(slider)
+                valueOfBlue.text = string(slider)
+                blueColorTF.text = string(slider)
             }
         }
-    }
-    
-    private func makeStringFormat(_ slider: UISlider) -> String{
-        String(format: "%.2f", slider.value)
     }
     
     private func changeColor() {
@@ -97,9 +97,13 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
+    
+    @objc private func didTapDone() {
+        view.endEditing(true)
+    }
 }
 
-//MARK: - Extensions
+//MARK: - TextField
 extension SettingsViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -107,23 +111,43 @@ extension SettingsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let newValue = textField.text else { return }
-        guard let numberValue = Float(newValue)
+        guard let value = textField.text else { return }
+        guard let currentValue = Float(value)
         else { return showAlert(title: "Invalid values",
                                 and: "Input the correct values") }
         
         if textField == redColorTF {
-            redColorSlider.value = numberValue
+            redColorSlider.setValue(currentValue, animated: true)
             transferSliderToValue(redColorSlider)
         } else if textField == greenColorTF {
-            greenColorSlider.value = numberValue
+            greenColorSlider.setValue(currentValue, animated: true)
             transferSliderToValue(greenColorSlider)
         } else {
-            blueColorSlider.value = numberValue
+            blueColorSlider.setValue(currentValue, animated: true)
             transferSliderToValue(blueColorSlider)
         }
-        changeColor()
         
+        changeColor()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let keyboardToolBar = UIToolbar()
+        keyboardToolBar.sizeToFit()
+        textField.inputAccessoryView = keyboardToolBar
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(didTapDone)
+        )
+        
+        let flexibleButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolBar.items = [flexibleButton, doneButton]
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
