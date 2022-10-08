@@ -13,18 +13,16 @@ protocol SettingsViewControllerDelegate {
 
 class MainViewController: UIViewController {
 
-    @IBOutlet var mainView: UIView!
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController
         else { return }
-        settingsVC.mainViewColor = mainView.backgroundColor
+        settingsVC.mainViewColor = view.backgroundColor
         settingsVC.delegate = self
     }
 }
 
 extension MainViewController: SettingsViewControllerDelegate {
     func receiveColor(view: UIColor) {
-        mainView.backgroundColor = view
+        self.view.backgroundColor = view
     }
 }

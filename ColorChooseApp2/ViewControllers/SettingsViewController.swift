@@ -20,19 +20,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenColorSlider: UISlider!
     @IBOutlet var blueColorSlider: UISlider!
     
-    @IBOutlet var redColorTF: UITextField!
+    @IBOutlet var redColorTF: UITextField! 
     @IBOutlet var greenColorTF: UITextField!
     @IBOutlet var blueColorTF: UITextField!
     
     //MARK: - Public Properties
     var mainViewColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
-    
-    //MARK: - Private Properties
-    private var red: CGFloat = 0
-    private var green: CGFloat = 0
-    private var blue: CGFloat = 0
-    
     
     //MARK: - Override method
     override func viewDidLoad() {
@@ -44,11 +38,12 @@ class SettingsViewController: UIViewController {
         blueColorTF.delegate = self
         
         //default color
-        mainViewColor.getRed(&red, green: &green, blue: &blue, alpha: nil)
         
-        redColorSlider.value = Float(red)
-        greenColorSlider.value = Float(green)
-        blueColorSlider.value = Float(blue)
+        let ciColor = CIColor(color: mainViewColor)
+        
+        redColorSlider.value = Float(ciColor.red)
+        greenColorSlider.value = Float(ciColor.green)
+        blueColorSlider.value = Float(ciColor.blue)
         
         transferSliderToValue(redColorSlider, greenColorSlider, blueColorSlider)
         
@@ -57,7 +52,7 @@ class SettingsViewController: UIViewController {
     
     //MARK: - IBActions
     @IBAction func doneButtonPressed() {
-        delegate.receiveColor(view: colorWindowView.backgroundColor!)
+        delegate.receiveColor(view: colorWindowView.backgroundColor ?? .white)
         dismiss(animated: true)
     }
     
@@ -120,16 +115,15 @@ extension SettingsViewController: UITextFieldDelegate {
         if textField == redColorTF {
             redColorSlider.value = numberValue
             transferSliderToValue(redColorSlider)
-            changeColor()
         } else if textField == greenColorTF {
             greenColorSlider.value = numberValue
             transferSliderToValue(greenColorSlider)
-            changeColor()
         } else {
             blueColorSlider.value = numberValue
             transferSliderToValue(blueColorSlider)
-            changeColor()
         }
+        changeColor()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
